@@ -1,0 +1,98 @@
+.carousel-container {
+    padding: 10px;
+}
+
+/* FOR POTENTIAL SLIDE IMPLEMENTATION */
+
+/* .carousel-container {
+    padding: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+} */
+
+.carousel {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+/* FOR POTENTIAL SLIDE IMPLEMENTATION */
+
+/* .carousel {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+} */
+
+.carousel-items-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+/* FOR POTENTIAL SLIDE IMPLEMENTATION */
+
+/* .carousel-items-wrapper {
+    display: flex;
+    flex-direction: row;
+} */
+
+.carousel-item,
+.carousel-arrow {
+    text-align: center;
+}
+
+.carousel-item {
+    width: 33%;
+}
+
+/* FOR POTENTIAL SLIDE IMPLEMENTATION */
+
+/* .carousel-item {
+    width: 33%;
+    padding-right: 200px;
+} */
+
+/* FOR POTENTIAL SLIDE IMPLEMENTATION */
+
+/* .carousel-item:first-child {
+    padding-left: 60px;
+}
+
+.carousel-item:last-child {
+    padding-right: 0;
+} */
+
+.carousel-item-name {
+    margin-top: 30px;
+}
+
+.carousel-item-description {
+    font-size: 12px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.carousel-pagination {
+    flex-direction: row;
+    justify-content: center;
+    display: flex;
+}
+
+@media screen and (min-width: 768px) {
+    .carousel-item-description {
+        font-size: 18px;
+    }
+}
+
+/* For touch devices that have screen widths up to 767px; */
+@media screen and (max-width: 767px) and (pointer: coarse) {
+    .carousel-item-name {
+        margin-top: 10px;
+    }
+    .carousel-item-description {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}

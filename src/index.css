@@ -1,3 +1,12 @@
+html {
+  font: 1.1em/1.4 Helvetica, sans-serif;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -11,4 +20,25 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 1335px;
+  margin: 0 auto;
+  /* border: red 1px solid; */
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex-shrink: 0;
+  background-color: black;
+  color: white;
+  height: 50px;
+  padding: 10px;
 }

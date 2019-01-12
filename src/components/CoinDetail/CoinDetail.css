@@ -1,0 +1,102 @@
+.detail-page {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.detail-page .header-title {
+    margin-top: 60px;      
+}
+
+.nav-links {
+    flex-basis: 100%;
+}
+
+.nav-link-home {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-link-home:visited {
+    color: black;
+}
+
+.highlighted-gif {
+    flex-basis: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.highlighted-gif img {
+    height: 40vw;
+    width: 80vw
+}
+
+.thumbnail-gifs {
+    flex-basis: 100%;
+    text-align: center;
+}
+
+.thumbnail-gif {
+    width: 15vw;
+    height: 15vw;
+    margin-right: 2vw;
+    cursor: pointer;
+}
+
+.thumbnail-gif {
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.thumbnail-gif:hover {
+    -webkit-transform: scale(1.25); /* Safari and Chrome */
+    -moz-transform: scale(1.25); /* Firefox */
+    -ms-transform: scale(1.25); /* IE 9 */
+    -o-transform: scale(1.25); /* Opera */
+     transform: scale(1.25);
+}
+
+.thumbnail-gif:last-child {
+    margin-right: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .highlighted-gif img {
+        height: 45vw;
+        width: 83vw
+    }
+
+    .thumbnail-gif {
+        width: 15vw;
+        height: 15vw;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    .highlighted-gif img {
+        height: 32vw;
+        width: 67vw
+    }
+
+    .thumbnail-gif {
+        width: 12vw;
+        height: 12vw;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .highlighted-gif img {
+        height: 20vw;
+        width: 43vw
+    }
+
+    .thumbnail-gif {
+        width: 7vw;
+        height: 7vw;
+    }
+}

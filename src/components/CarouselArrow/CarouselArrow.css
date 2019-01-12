@@ -1,0 +1,30 @@
+.carousel-arrow {
+    cursor: pointer;
+    font-size: 40px;
+    border-style: solid;
+    border-width: 0.1em 0.1em 0 0;
+    border-color: black;
+    content: '';
+    display: inline-block;
+    height: 4vw;
+    transform: rotate(-45deg);
+    width: 4vw;
+    position: absolute;
+}
+
+.carousel-arrow.left {
+    transform: rotate(-135deg);
+    left: 1vw;
+    top: 5vw;
+}
+
+.carousel-arrow.right {
+    transform: rotate(45deg);
+    right: 1vw;
+    top: 5vw;
+}
+
+.carousel-arrow.disabled {
+    cursor: default;
+    border-color: gray;
+}
