@@ -1,14 +1,7 @@
 .carousel-container {
     padding: 10px;
+    margin-top: 10px;
 }
-
-/* FOR POTENTIAL SLIDE IMPLEMENTATION */
-
-/* .carousel-container {
-    padding: 10px;
-    padding-left: 0px;
-    padding-right: 0px;
-} */
 
 .carousel {
     display: flex;
@@ -16,27 +9,18 @@
     position: relative;
 }
 
-/* FOR POTENTIAL SLIDE IMPLEMENTATION */
-
-/* .carousel {
+.carousel {
     display: flex;
     flex-direction: row;
     position: relative;
     overflow: hidden;
-    width: 100%;
-} */
+}
 
 .carousel-items-wrapper {
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
-
-/* FOR POTENTIAL SLIDE IMPLEMENTATION */
-
-/* .carousel-items-wrapper {
-    display: flex;
-    flex-direction: row;
-} */
 
 .carousel-item,
 .carousel-arrow {
@@ -45,24 +29,13 @@
 
 .carousel-item {
     width: 33%;
+    padding-right: 205px;
+    margin-top: 30px;
 }
 
-/* FOR POTENTIAL SLIDE IMPLEMENTATION */
-
-/* .carousel-item {
-    width: 33%;
-    padding-right: 200px;
-} */
-
-/* FOR POTENTIAL SLIDE IMPLEMENTATION */
-
-/* .carousel-item:first-child {
-    padding-left: 60px;
+.carousel-item:first-child {
+    margin-left: 100px;
 }
-
-.carousel-item:last-child {
-    padding-right: 0;
-} */
 
 .carousel-item-name {
     margin-top: 30px;
@@ -72,6 +45,8 @@
     font-size: 12px;
     margin-bottom: 40px;
     margin-top: 40px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .carousel-pagination {
@@ -80,19 +55,154 @@
     display: flex;
 }
 
-@media screen and (min-width: 768px) {
+/* For touch devices that have screen widths up to 767px; */
+@media screen and (min-width: 320px) {
+    .carousel-item-name {
+        margin-top: 0px;
+        padding-right: 0px;
+        font-size: 16px;
+    }
     .carousel-item-description {
-        font-size: 18px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font-size: 10px;
+    }
+    .carousel-item {
+        padding-right: 40px;
+        margin-top: 0px;
+    }
+
+    .carousel-item:first-child {
+        margin-left: 30px;
     }
 }
 
-/* For touch devices that have screen widths up to 767px; */
-@media screen and (max-width: 767px) and (pointer: coarse) {
+@media screen and (min-width: 360px) {
     .carousel-item-name {
-        margin-top: 10px;
+        margin-top: 0px;
+        padding-right: 0px;
+        font-size: 16px;
     }
     .carousel-item-description {
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font-size: 13px;
+    }
+    .carousel-item {
+        padding-right: 45px;
+        margin-top: 0px;
+    }
+
+    .carousel-item:first-child {
+        margin-left: 40px;
+    }
+}
+
+@media screen and (min-width: 414px) {
+    .carousel-item-name {
+        margin-top: 0px;
+        padding-right: 0px;
+        font-size: 16px;
+    }
+    .carousel-item-description {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font-size: 13px;
+    }
+    .carousel-item {
+        padding-right: 70px;
+        margin-top: 0px;
+    }
+
+    .carousel-item:first-child {
+        margin-left: 40px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .carousel-item-name {
+        margin-top: 0px;
+        padding-right: 0px;
+        font-size: 20px;
+    }
+    .carousel-item-description {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font-size: 18px;
+    }
+    
+    .carousel-item {
+        padding-right: 90px;
+        margin-top: 0px;
+    }
+
+    .carousel-item:first-child {
+        margin-left: 60px;
+    }
+
+    .carousel-pagination {
+        margin-top: 30px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .carousel-item-name {
+        margin-top: 0px;
+        padding-right: 0px;
+        font-size: 20px;
+    }
+    .carousel-item-description {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font-size: 18px;
+    }
+    .carousel-item {
+        padding-right: 105px;
+        margin-top: 0px;
+    }
+
+    .carousel-item:first-child {
+        margin-left: 100px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .carousel-item-name {
+        margin-top: 30px;
+        padding-right: 0px;
+        font-size: 20px;
+    }
+    .carousel-item-description {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font-size: 18px;
+    }
+    .carousel-item {
+        padding-right: 215px;
+        margin-top: 30px;
+    }
+
+    .carousel-item:first-child {
+        margin-left: 115px;
+    }
+}
+
+@media screen and (min-width: 1366px) {
+    .carousel-item {
+        width: 33%;
+        padding-right: 200px;
+        margin-top: 30px;
+    }
+
+    .carousel-item-name {
+        margin-top: 30px;
+    }
+
+    .carousel-item:first-child {
+        margin-left: 105px;
+    }
+
+    .carousel-pagination {
+        margin-top: 30px;
     }
 }

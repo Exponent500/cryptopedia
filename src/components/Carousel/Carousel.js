@@ -10,97 +10,95 @@ class Carousel extends Component {
     constructor(props) {
         super(props);
         
-        this.state = {
-            itemsPerPage: 3,
-            currentPage: null,
-            currentItems: [],
-        };
-
-        /* POTENTIAL NEW IMPLEMENTATION TO SUPPORT SLIDE EFFECT */
         // this.state = {
         //     itemsPerPage: 3,
         //     currentPage: null,
         //     currentItems: [],
-        //     translateValue: 0
         // };
+
+        this.state = {
+            itemsPerPage: 3,
+            currentPage: null,
+            currentItems: [],
+            translateValue: 0
+        };
     }
 
     onGoBackOnePage() {
-        let { itemsPerPage, currentPage } = this.state;
+        const { translateValue, currentPage } = this.state;
         if (currentPage === 1) return;
-        currentPage = currentPage - 1;
-        const offset = (currentPage - 1) * itemsPerPage;
-        const currentItems = this.props.items.slice(offset, offset + itemsPerPage);
-        this.setState( { currentPage, currentItems })
+        const newTranslateValue = translateValue + this.slideWidth();
+        const newPage = currentPage - 1;
+        this.setState({ currentPage: newPage, translateValue: newTranslateValue });
     }
 
-    onGoForwardOnePage() {
-        let { itemsPerPage, currentPage } = this.state;
-        if (currentPage * itemsPerPage >= this.props.items.length) return;
-        currentPage = currentPage + 1;
-        const offset = (currentPage - 1) * itemsPerPage;
-        const currentItems = this.props.items.slice(offset, offset + itemsPerPage);
-        this.setState( { currentPage, currentItems });
-    }
-
-    onPageChange(page) {
-        const { itemsPerPage } = this.state;
-        const offset = (page - 1) * itemsPerPage;
-        const currentItems = this.props.items.slice(offset, offset + itemsPerPage);
-        this.setState( { currentPage: page, currentItems });
-    }
-
-    /* POTENTIAL NEW IMPLEMENTATION TO SUPPORT SLIDE EFFECT */
-    // onPageChange(page) {
-    //     let newTranslateValue;
-
-    //     if( page === 1) {
-    //         newTranslateValue = this.slideWidth() * 0;
-    //         this.setState({ currentPage: page, translateValue: newTranslateValue });
-    //         return;
-    //     }
-    //     newTranslateValue = -(this.slideWidth() * (page - 1.4) );
-    //     // this.setState(prevState => ({
-    //     //     currentIndex: prevState.currentIndex + 1,
-    //     //     translateValue: prevState.translateValue + -(this.slideWidth())
-    //     //   }));
-    //     this.setState( { currentPage: page, translateValue: newTranslateValue });
+    // onGoBackOnePage() {
+    //     let { itemsPerPage, currentPage } = this.state;
+    //     if (currentPage === 1) return;
+    //     currentPage = currentPage - 1;
+    //     const offset = (currentPage - 1) * itemsPerPage;
+    //     const currentItems = this.props.items.slice(offset, offset + itemsPerPage);
+    //     this.setState( { currentPage, currentItems })
     // }
 
-    // slideWidth = () => {
-    //     return document.querySelector('.carousel-item').clientWidth * 4
-    //  }
-
-    renderCarouselItems() {
-        const { items } = this.props;
-        const { currentItems } = this.state; 
-        if (items.length) {
-            return currentItems.map( item => {
-                const miningAlgorithmMessage = item.CoinInfo.ProofType === 'N/A' ? 'does not use a' : `uses the ${item.CoinInfo.ProofType}`;
-                const blockRewardMessage = item.CoinInfo.BlockReward === 0 ? 'no Block Reward': `a Block Reward of ${item.CoinInfo.BlockReward}`;
-                const coinDescription = `${item.CoinInfo.FullName} is a crypto asset that ${miningAlgorithmMessage}
-                                        mining algorithm and has ${blockRewardMessage}.`;
-                return (
-                    <div
-                        key={item.CoinInfo.Id}
-                        className="carousel-item">
-                            <CarouselImage
-                                url={item.CoinInfo.ImageUrl}
-                                route={item.CoinInfo.Internal}
-                                />
-                        <p className="carousel-item-name">{item.CoinInfo.FullName}</p>
-                        <p className="carousel-item-description">{coinDescription}</p>
-                    </div>
-                )
-            })
-        }
+    onGoForwardOnePage() {
+        const { translateValue, currentPage, itemsPerPage } = this.state;
+        if (currentPage * itemsPerPage >= this.props.items.length) return;
+        const newTranslateValue = translateValue - this.slideWidth();
+        const newPage = currentPage + 1;
+        this.setState({ currentPage: newPage, translateValue: newTranslateValue });
     }
 
+    // onGoForwardOnePage() {
+    //     let { itemsPerPage, currentPage } = this.state;
+    //     if (currentPage * itemsPerPage >= this.props.items.length) return;
+    //     currentPage = currentPage + 1;
+    //     const offset = (currentPage - 1) * itemsPerPage;
+    //     const currentItems = this.props.items.slice(offset, offset + itemsPerPage);
+    //     this.setState( { currentPage, currentItems });
+    // }
+
+    // onPageChange(page) {
+    //     const { itemsPerPage } = this.state;
+    //     const offset = (page - 1) * itemsPerPage;
+    //     const currentItems = this.props.items.slice(offset, offset + itemsPerPage);
+    //     this.setState( { currentPage: page, currentItems });
+    // }
+
     /* POTENTIAL NEW IMPLEMENTATION TO SUPPORT SLIDE EFFECT */
+    onPageChange(page) {
+        const { translateValue, currentPage } = this.state;
+        let newTranslateValue;
+
+        if ( page === currentPage ) {
+            return;
+        }
+
+        if( page === 1) {
+            newTranslateValue = 0;
+            this.setState({ currentPage: page, translateValue: newTranslateValue });
+            return;
+        }
+
+        if ( page < currentPage ) {
+            newTranslateValue = (translateValue + this.slideWidth()) * (currentPage - page);
+        }
+
+        if ( page > currentPage) {
+            newTranslateValue = (translateValue - this.slideWidth()) * (page - currentPage);
+        }
+        this.setState( { currentPage: page, translateValue: newTranslateValue });
+    }
+
+    slideWidth = () => {
+        return document.querySelector('.carousel-item').clientWidth * 3
+     }
+
     // renderCarouselItems() {
     //     const { items } = this.props;
+    //     const { currentItems } = this.state; 
     //     if (items.length) {
-    //         return items.map( item => {
+    //         return currentItems.map( item => {
     //             const miningAlgorithmMessage = item.CoinInfo.ProofType === 'N/A' ? 'does not use a' : `uses the ${item.CoinInfo.ProofType}`;
     //             const blockRewardMessage = item.CoinInfo.BlockReward === 0 ? 'no Block Reward': `a Block Reward of ${item.CoinInfo.BlockReward}`;
     //             const coinDescription = `${item.CoinInfo.FullName} is a crypto asset that ${miningAlgorithmMessage}
@@ -121,6 +119,31 @@ class Carousel extends Component {
     //     }
     // }
 
+    /* POTENTIAL NEW IMPLEMENTATION TO SUPPORT SLIDE EFFECT */
+    renderCarouselItems() {
+        const { items } = this.props;
+        if (items.length) {
+            return items.map( item => {
+                const miningAlgorithmMessage = item.CoinInfo.ProofType === 'N/A' ? 'does not use a' : `uses the ${item.CoinInfo.ProofType}`;
+                const blockRewardMessage = item.CoinInfo.BlockReward === 0 ? 'no Block Reward': `a Block Reward of ${item.CoinInfo.BlockReward}`;
+                const coinDescription = `${item.CoinInfo.FullName} is a crypto asset that ${miningAlgorithmMessage}
+                                        mining algorithm and has ${blockRewardMessage}.`;
+                return (
+                    <div
+                        key={item.CoinInfo.Id}
+                        className="carousel-item">
+                            <CarouselImage
+                                url={item.CoinInfo.ImageUrl}
+                                route={item.CoinInfo.Internal}
+                                />
+                        <p className="carousel-item-name">{item.CoinInfo.FullName}</p>
+                        <p className="carousel-item-description">{coinDescription}</p>
+                    </div>
+                )
+            })
+        }
+    }
+
     render() {
         const { currentPage, itemsPerPage } = this.state;
         const disableLeftArrow = currentPage === 1 ? true : false;
@@ -137,17 +160,17 @@ class Carousel extends Component {
                         icon="&#8249;"
                         disabled={disableLeftArrow} />
                     {/* POTENTIAL IMPLEMENTATION OF SLIDE EFFECT */}
-                    {/* <div 
+                    <div 
                         className="carousel-items-wrapper"
                         style={{
                             transform: `translateX(${this.state.translateValue}px)`,
                             transition: 'transform ease-out 0.45s'
                           }}>
                         {this.renderCarouselItems()}
-                    </div> */}
-                    <div className="carousel-items-wrapper">
-                        {this.renderCarouselItems()}
                     </div>
+                    {/* <div className="carousel-items-wrapper">
+                        {this.renderCarouselItems()}
+                    </div> */}
                     <CarouselArrow
                         className="carousel-arrow"
                         direction="right"

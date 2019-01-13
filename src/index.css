@@ -26,7 +26,7 @@ code {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  max-width: 1335px;
+  max-width: 1366px;
   margin: 0 auto;
   /* border: red 1px solid; */
 }

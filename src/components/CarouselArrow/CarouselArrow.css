@@ -6,25 +6,109 @@
     border-color: black;
     content: '';
     display: inline-block;
-    height: 4vw;
     transform: rotate(-45deg);
-    width: 4vw;
     position: absolute;
 }
 
+/* .carousel-arrow.left {
+    transform: rotate(-135deg);
+} */
+
 .carousel-arrow.left {
     transform: rotate(-135deg);
-    left: 1vw;
-    top: 5vw;
+    z-index: 1;
 }
 
 .carousel-arrow.right {
     transform: rotate(45deg);
-    right: 1vw;
-    top: 5vw;
 }
 
 .carousel-arrow.disabled {
     cursor: default;
     border-color: gray;
+}
+
+@media screen and (min-width: 320px) {
+    .carousel-arrow {
+        height: 20px;
+        width: 20px;
+    }
+    
+    .carousel-arrow.left {
+        left: 3px;
+        top: 11px;
+    }
+    
+    .carousel-arrow.right {
+        right: 3px;
+        top: 11px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .carousel-arrow {
+        height: 40px;
+        width: 40px;
+    }
+    
+    .carousel-arrow.left {
+        left: 10px;
+        top: 58px;
+    }
+    
+    .carousel-arrow.right {
+        right: 10px;
+        top: 58px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .carousel-arrow {
+        height: 55px;
+        width: 55px;
+    }
+    
+    .carousel-arrow.left {
+        left: 20px;
+        top: 72px;
+    }
+    
+    .carousel-arrow.right {
+        right: 20px;
+        top: 72px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .carousel-arrow {
+        height: 55px;
+        width: 55px;
+    }
+    
+    .carousel-arrow.left {
+        left: 15px;
+        top: 100px;
+    }
+    
+    .carousel-arrow.right {
+        right: 15px;
+        top: 100px;
+    }
+}
+
+@media screen and (min-width: 1366px) {
+    .carousel-arrow {
+        height: 55px;
+        width: 55px;
+    }
+    
+    .carousel-arrow.left {
+        left: 15px;
+        top: 120px;
+    }
+    
+    .carousel-arrow.right {
+        right: 15px;
+        top: 120px;
+    }
 }

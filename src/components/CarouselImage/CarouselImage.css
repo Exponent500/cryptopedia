@@ -1,9 +1,4 @@
 .carousel-image img {
-    height: 13vw;
-    width: 13vw;
-}
-
-.carousel-image img {
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
@@ -17,4 +12,39 @@
     -ms-transform: scale(1.25);
     -o-transform: scale(1.25);
      transform: scale(1.25);
+}
+
+@media screen and (min-width: 320px) {
+    .carousel-image img {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .carousel-image img {
+        height: 150px;
+        width: 150px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .carousel-image img {
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .carousel-image img {
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media screen and (min-width: 1366px) {
+    .carousel-image img {
+        height: 250px;
+        width: 250px;
+    }
 }
