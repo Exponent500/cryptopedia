@@ -35,11 +35,7 @@ class HomePage extends Component {
     }
     return (
       <div className="home-page">
-          <header className="header">
-            <h1 className="header-title">Cryptopedia</h1>
-            <p className="header-description">Your one-stop shop for information on the most popular crypto assets.</p>
-          </header>
-          <section>
+          <section className="carousel-container">
             <Carousel items={coinData}></Carousel>
           </section>
       </div>

@@ -17,18 +17,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 .container {
   height: 100vh;
   display: flex;
   flex-direction: column;
   max-width: 1366px;
   margin: 0 auto;
-  /* border: red 1px solid; */
 }
 
 .content {

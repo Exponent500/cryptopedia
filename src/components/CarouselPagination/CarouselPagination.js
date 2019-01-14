@@ -4,19 +4,11 @@ import classNames from 'classnames';
 import './CarouselPagination.css';
 
 class CarouselPagination extends Component {
-    constructor(props) {
-        super(props);
-        // this.state = {
-        //     currentPage: 1
-        // };
-    }
-
     componentDidMount() {
         this.props.onPageChange(1);
     }
 
     onPageChanged(page) {
-        // this.setState({ currentPage: page });
         this.props.onPageChange(page);
     }
 

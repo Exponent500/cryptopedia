@@ -9,13 +9,6 @@ import CarouselPagination from '../CarouselPagination/CarouselPagination';
 class Carousel extends Component {
     constructor(props) {
         super(props);
-        
-        // this.state = {
-        //     itemsPerPage: 3,
-        //     currentPage: null,
-        //     currentItems: [],
-        // };
-
         this.state = {
             itemsPerPage: 3,
             currentPage: null,
@@ -27,99 +20,45 @@ class Carousel extends Component {
     onGoBackOnePage() {
         const { translateValue, currentPage } = this.state;
         if (currentPage === 1) return;
-        const newTranslateValue = translateValue + this.slideWidth();
+        const newTranslateValue = translateValue + this.carouselWindowWidth();
         const newPage = currentPage - 1;
         this.setState({ currentPage: newPage, translateValue: newTranslateValue });
     }
 
-    // onGoBackOnePage() {
-    //     let { itemsPerPage, currentPage } = this.state;
-    //     if (currentPage === 1) return;
-    //     currentPage = currentPage - 1;
-    //     const offset = (currentPage - 1) * itemsPerPage;
-    //     const currentItems = this.props.items.slice(offset, offset + itemsPerPage);
-    //     this.setState( { currentPage, currentItems })
-    // }
-
     onGoForwardOnePage() {
         const { translateValue, currentPage, itemsPerPage } = this.state;
         if (currentPage * itemsPerPage >= this.props.items.length) return;
-        const newTranslateValue = translateValue - this.slideWidth();
+        const newTranslateValue = translateValue - this.carouselWindowWidth();
         const newPage = currentPage + 1;
         this.setState({ currentPage: newPage, translateValue: newTranslateValue });
     }
 
-    // onGoForwardOnePage() {
-    //     let { itemsPerPage, currentPage } = this.state;
-    //     if (currentPage * itemsPerPage >= this.props.items.length) return;
-    //     currentPage = currentPage + 1;
-    //     const offset = (currentPage - 1) * itemsPerPage;
-    //     const currentItems = this.props.items.slice(offset, offset + itemsPerPage);
-    //     this.setState( { currentPage, currentItems });
-    // }
-
-    // onPageChange(page) {
-    //     const { itemsPerPage } = this.state;
-    //     const offset = (page - 1) * itemsPerPage;
-    //     const currentItems = this.props.items.slice(offset, offset + itemsPerPage);
-    //     this.setState( { currentPage: page, currentItems });
-    // }
-
-    /* POTENTIAL NEW IMPLEMENTATION TO SUPPORT SLIDE EFFECT */
     onPageChange(page) {
         const { translateValue, currentPage } = this.state;
         let newTranslateValue;
 
-        if ( page === currentPage ) {
-            return;
-        }
+        if (page === currentPage) return;
 
-        if( page === 1) {
+        if(page === 1) {
             newTranslateValue = 0;
             this.setState({ currentPage: page, translateValue: newTranslateValue });
             return;
         }
 
-        if ( page < currentPage ) {
-            newTranslateValue = (translateValue + this.slideWidth()) * (currentPage - page);
+        if (page < currentPage) {
+            newTranslateValue = (translateValue + this.carouselWindowWidth()) * (currentPage - page);
         }
 
-        if ( page > currentPage) {
-            newTranslateValue = (translateValue - this.slideWidth()) * (page - currentPage);
+        if (page > currentPage) {
+            newTranslateValue = (translateValue - this.carouselWindowWidth()) * (page - currentPage);
         }
         this.setState( { currentPage: page, translateValue: newTranslateValue });
     }
 
-    slideWidth = () => {
-        return document.querySelector('.carousel-item').clientWidth * 3
+    carouselWindowWidth() {
+        return document.querySelector('.carousel-item').clientWidth * this.state.itemsPerPage
      }
 
-    // renderCarouselItems() {
-    //     const { items } = this.props;
-    //     const { currentItems } = this.state; 
-    //     if (items.length) {
-    //         return currentItems.map( item => {
-    //             const miningAlgorithmMessage = item.CoinInfo.ProofType === 'N/A' ? 'does not use a' : `uses the ${item.CoinInfo.ProofType}`;
-    //             const blockRewardMessage = item.CoinInfo.BlockReward === 0 ? 'no Block Reward': `a Block Reward of ${item.CoinInfo.BlockReward}`;
-    //             const coinDescription = `${item.CoinInfo.FullName} is a crypto asset that ${miningAlgorithmMessage}
-    //                                     mining algorithm and has ${blockRewardMessage}.`;
-    //             return (
-    //                 <div
-    //                     key={item.CoinInfo.Id}
-    //                     className="carousel-item">
-    //                         <CarouselImage
-    //                             url={item.CoinInfo.ImageUrl}
-    //                             route={item.CoinInfo.Internal}
-    //                             />
-    //                     <p className="carousel-item-name">{item.CoinInfo.FullName}</p>
-    //                     <p className="carousel-item-description">{coinDescription}</p>
-    //                 </div>
-    //             )
-    //         })
-    //     }
-    // }
-
-    /* POTENTIAL NEW IMPLEMENTATION TO SUPPORT SLIDE EFFECT */
     renderCarouselItems() {
         const { items } = this.props;
         if (items.length) {
@@ -148,7 +87,6 @@ class Carousel extends Component {
         const { currentPage, itemsPerPage } = this.state;
         const disableLeftArrow = currentPage === 1 ? true : false;
         const disableRightArrow = currentPage * itemsPerPage >= this.props.items.length ? true : false;
-        console.log(this.state.translateValue);
 
         return (
             <div className="carousel-container">
@@ -159,7 +97,6 @@ class Carousel extends Component {
                         clickFunction={ () => this.onGoBackOnePage() }
                         icon="&#8249;"
                         disabled={disableLeftArrow} />
-                    {/* POTENTIAL IMPLEMENTATION OF SLIDE EFFECT */}
                     <div 
                         className="carousel-items-wrapper"
                         style={{
@@ -168,9 +105,6 @@ class Carousel extends Component {
                           }}>
                         {this.renderCarouselItems()}
                     </div>
-                    {/* <div className="carousel-items-wrapper">
-                        {this.renderCarouselItems()}
-                    </div> */}
                     <CarouselArrow
                         className="carousel-arrow"
                         direction="right"

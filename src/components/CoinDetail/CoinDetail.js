@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import './CoinDetail.css';
 
@@ -50,7 +49,6 @@ class CoinDetail extends Component {
 
     renderGifs() {
         const { gifs } = this.state;
-        console.log(gifs);
         if (gifs.length) {
             return gifs.map( gif => {
                 return (
@@ -66,37 +64,18 @@ class CoinDetail extends Component {
         }
     }
 
-    renderNavLinks() {
-        const { coinInfo } = this.state;
-        return (
-            <div>
-                <Link 
-                    className='nav-link-home'
-                    to={'/'}>Home
-                </Link>
-                /{coinInfo.FullName}
-            </div>
-        );
-    }
-
     render() {
         const { coinInfo } = this.state;
         return (
             <div className="detail-page">
-                <header className="header">
-                    <h1 className="header-title">{coinInfo.FullName}</h1>
+                <header>
+                    <h1 className="header-name">{coinInfo.FullName}</h1>
                 </header>
-                <div className="nav-links">
-                    {this.renderNavLinks()}
-                </div>
                 <div className="highlighted-gif">
                     {this.renderHighlightedGif()}
                 </div>
                 <div className="thumbnail-gifs">
                     {this.renderGifs()}
-                </div>
-                <div>
-                    Lorem ipsum
                 </div>
             </div>
         );

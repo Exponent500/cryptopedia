@@ -4,21 +4,8 @@
     justify-content: center;
 }
 
-.detail-page .header-title {
-    margin-top: 60px;      
-}
-
-.nav-links {
-    flex-basis: 100%;
-}
-
-.nav-link-home {
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.nav-link-home:visited {
-    color: black;
+.detail-page .header-name {
+    font-size: 18px;      
 }
 
 .highlighted-gif {

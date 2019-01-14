@@ -1,0 +1,12 @@
+.page-nav-links {
+    height: 25px
+}
+
+.page-nav-link-home {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.page-nav-link-home:visited {
+    color: black;
+}

@@ -4,22 +4,6 @@
   justify-content: center;
 }
 
-.header {
-  background-color: black;
-  color: white;
-  flex-basis: 100%;
-  margin-bottom: 20px;
-  height: 200px;
-  padding: 10px;
-}
-
-.header-title,
-.header-description {
-  text-align: center;
-}
-
-/* FOR POTENTIAL SLIDE IMPLEMENTATION */
-
-section {
+.carousel-container {
   min-width: 0px;
 }

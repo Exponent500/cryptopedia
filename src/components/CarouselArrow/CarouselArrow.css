@@ -10,10 +10,6 @@
     position: absolute;
 }
 
-/* .carousel-arrow.left {
-    transform: rotate(-135deg);
-} */
-
 .carousel-arrow.left {
     transform: rotate(-135deg);
     z-index: 1;
